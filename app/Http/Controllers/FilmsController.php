@@ -24,7 +24,8 @@ class FilmsController extends Controller
      */
     public function create()
     {
-        //
+        $genres = Genre::all();
+        return view('create', compact('genres'));
     }
 
     /**
@@ -32,15 +33,31 @@ class FilmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newFilm = new Film();
+        $data = $request->all();
+
+        $newFilm->title_film = $data['title_film'];
+        $newFilm->plot = $data['plot'];
+        $newFilm->image = $data['image'];
+        $newFilm->duration = $data['duration'];
+        $newFilm->year = $data['year'];
+
+        $newFilm->save();
+
+        if ($request->has('genre')) {
+            $newFilm->genres()->attach($data['genre']);
+        };
+
+
+        return redirect()->route('film.show', [$newFilm]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Film $film)
     {
-        //
+        return view('show', compact('film'));
     }
 
     /**

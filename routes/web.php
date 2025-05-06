@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FilmController::class, 'index']);
+Route::get('/user', function () {
+    return view('user');
+})->name('user');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
