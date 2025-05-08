@@ -63,24 +63,44 @@ class FilmsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Film $film)
     {
-        //
+        $genres = Genre::all();
+        return view('modify', compact('genres', 'film'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Film $film)
     {
-        //
+        $data = $request->all();
+
+        $film->title_film = $data['title_film'];
+        $film->plot = $data['plot'];
+        $film->image = $data['image'];
+        $film->duration = $data['duration'];
+        $film->year = $data['year'];
+
+        $film->update();
+
+        if ($request->has('genre')) {
+            $film->genres()->sync($data['genre']);
+        } else {
+            $film->genres()->detach();
+        };
+
+
+        return redirect()->route('film.show', $film);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Film $film)
     {
-        //
+        $film->genres()->detach();
+        $film->delete();
+        return redirect()->route('film.index');
     }
 }

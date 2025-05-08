@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Film;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FilmController::class, 'index']);
@@ -11,7 +13,8 @@ Route::get('/user', function () {
 })->name('user');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $films = Film::all();
+    return view('dashboard', compact('films'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -20,6 +23,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('/film', FilmsController::class);
+Route::middleware(['auth', 'verified'])
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])
+            ->name('index');
+    });
 
+Route::resource('/film', FilmsController::class);
 require __DIR__ . '/auth.php';
