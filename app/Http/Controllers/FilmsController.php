@@ -84,11 +84,23 @@ class FilmsController extends Controller
 
         $film->title_film = $data['title_film'];
         $film->plot = $data['plot'];
-        $film->image = $data['image'];
         $film->duration = $data['duration'];
         $film->year = $data['year'];
 
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            // Elimina l'immagine precedente se esiste
+            if ($film->image && Storage::exists($film->image)) {
+                Storage::delete($film->image);
+            }
+
+            // Salva la nuova immagine
+            $path = $request->file('image')->store('image_url', 'public');
+            $film->image = $path;
+        }
+
         $film->update();
+
 
         if ($request->has('genre')) {
             $film->genres()->sync($data['genre']);

@@ -1,4 +1,4 @@
-<form class="max-w-md mx-auto pt-10 text-white" action="{{route('film.update', $film)}}" method="POST">
+<form class="max-w-md mx-auto pt-10 text-white" action="{{route('film.update', $film)}}" method="POST" enctype="multipart/form-data">
 
   @csrf
   @method('PUT')
@@ -17,7 +17,13 @@
   </div>
 
   <div class="relative z-0 w-full mb-5 group">
-    <input type="file" id="image"  name="image" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0  peer" placeholder=" "  value="{{$film->image}}" required />
+    @if($film->image)
+     <div id="film-image">
+       <img class="h-[150px] w-[100px] object-cover pt-5" src="{{asset('storage/' . $film->image)}}" alt="">
+     </div>
+    @endif
+    <input type="file" id="image"  name="image" class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0  peer" placeholder=" "  value="{{asset('storage/' . $film->image)}}" required />
+    
     
     <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Image URL</label>
   </div>
