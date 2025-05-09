@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FilmsController extends Controller
 {
@@ -33,21 +34,26 @@ class FilmsController extends Controller
      */
     public function store(Request $request)
     {
+
         $newFilm = new Film();
         $data = $request->all();
 
+
         $newFilm->title_film = $data['title_film'];
         $newFilm->plot = $data['plot'];
-        $newFilm->image = $data['image'];
         $newFilm->duration = $data['duration'];
         $newFilm->year = $data['year'];
+
+        if (array_key_exists('image', $data)) {
+            $img = Storage::putFile('image_url', $data['image']);
+            $newFilm->image = $img;
+        }
 
         $newFilm->save();
 
         if ($request->has('genre')) {
             $newFilm->genres()->attach($data['genre']);
         };
-
 
         return redirect()->route('film.show', [$newFilm]);
     }
