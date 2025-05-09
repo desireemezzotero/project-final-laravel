@@ -43,4 +43,3 @@
         @include('.components.component.delete')
     </div>
   </div>
-s
