@@ -10,7 +10,10 @@ class FilmController extends Controller
 {
     public function index()
     {
-        $films = Film::with('genres')->get();
+        $films = Film::with('genres')->get()->map(function ($film) {
+            $film->image = asset('storage/' . $film->image);
+            return $film;
+        });
 
         return response()->json(
             [
@@ -23,6 +26,9 @@ class FilmController extends Controller
     public function show(Film $film)
     {
         $film->load('genres');
+
+        $film->image = asset('storage/' . $film->image);
+
         return response()->json(
             [
                 "success" => 'true',
