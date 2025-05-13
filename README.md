@@ -1,66 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PROGETTO FINALE
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Questo progetto è stato sviluppato come parte del percorso finale del corso di Fullstack Web Developer con specializzazione in PHP e Laravel. L’obiettivo del progetto era creare un'applicazione completa che includesse:
 
-## About Laravel
+-   Un backoffice in Laravel per gestire i dati tramite operazioni CRUD (Create, Read, Update, Delete).
+-   Un frontend in React che permettesse ai visitatori non autenticati di visualizzare e interagire con i dati.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Descrizione:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Il progetto si concentra sulla gestione di film della Disney, con una struttura che permette di aggiungere, modificare, visualizzare e eliminare film.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Backoffice in Laravel:
 
-## Learning Laravel
+Il backoffice è costruito con Laravel e gestisce tutte le operazioni CRUD sui film. L'applicazione utilizza Laravel Breeze per l'autenticazione e consente agli utenti autenticati di:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Visualizzare l'elenco dei film.
+-   Aggiungere, modificare ed eliminare film.
+-   Gestire le categorie di film (es. animazione, avventura, commedia, ecc.), che sono collegate ai film tramite una relazione N-N.
+-   Inoltre è stato aggiunto un sistema di filtraggio in base alla categoria del film
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Frontend in React:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Il frontend in React è destinato ai visitatori non autenticati e offre le seguenti funzionalità:
 
-## Laravel Sponsors
+-   Visualizzazione dell'elenco dei film: Un'interfaccia che mostra tutti i film con una breve descrizione.
+-   Visualizzazione dei dettagli di un film: Ogni film ha una propria pagina con informazioni dettagliate, incluse le categorie a cui appartiene.
+-   Comunicazione con il backend: Il frontend comunica con il backend tramite chiamate AJAX utilizzando API REST per recuperare i dati sui film e le loro categorie.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 🛠️ Tecnologie utilizzate
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   Backend: Laravel (PHP)
+-   Autenticazione con Laravel Breeze
+-   Gestione delle entità tramite Eloquent ORM e relazioni nel database
+-   API REST per comunicare con il frontend React
+-   Frontend: React
+-   Componenti React per visualizzare i dati
+-   Chiamate API AJAX per comunicare con il backend
+-   React Router per navigazione tra le pagine
+-   Tailwind CSS per la stilizzazione
+-   Database: MySQL
+-   Postman per testare le API
+-   Laravel Artisan per gestire la migrazione del database
