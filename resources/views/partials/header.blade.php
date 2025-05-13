@@ -40,15 +40,6 @@
       <li>
         <a href="{{route('film.index')}}" class="block py-2 px-3 text-white rounded-sm md:bg-transparent" aria-current="page">Home</a>
       </li>
-
-      <li>
-        <a href="#" class="block py-2 px-3 text-white rounded-sm md:bg-transparent" aria-current="page">About me</a>
-      </li>
-
-      <li>
-        <a href="#" class="block py-2 px-3 text-white rounded-sm md:bg-transparent" aria-current="page">Services</a>
-      </li>
-
       @auth
   @if(auth()->user()->remember_token === auth()->user()->remember_token)
     <li>

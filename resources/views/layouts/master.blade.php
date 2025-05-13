@@ -8,6 +8,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   @vite('resources/css/app.css')
+  @livewireStyles
 </head>
 <body>
   <header>
@@ -16,8 +17,6 @@
   <main>
     @yield('component')
   </main>
-  <footer>
-
-  </footer>
+  @livewireScripts
 </body>
 </html>
