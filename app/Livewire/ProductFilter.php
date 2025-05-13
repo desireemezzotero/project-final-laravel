@@ -23,7 +23,7 @@ class ProductFilter extends Component
         $genres = Genre::all();
 
 
-        $filmss = Film::when($this->genre, function ($query) {
+        $films = Film::when($this->genre, function ($query) {
             if ($this->genre) {
                 $query->whereHas('genres', function ($q) {
                     $q->where('genres.id', $this->genre);
@@ -32,6 +32,6 @@ class ProductFilter extends Component
         })->get();
 
         // Rende la vista con i film e i generi
-        return view('livewire.product-filter', compact('filmss', 'genres'));
+        return view('livewire.product-filter', compact('films', 'genres'));
     }
 }
