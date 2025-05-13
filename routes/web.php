@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FilmController::class, 'index']);
 Route::get('/user', function () {
-    return view('user');
+    $films = Film::all();
+    return view('user', compact('films'));
 })->name('user');
 
 Route::get('/dashboard', function () {
