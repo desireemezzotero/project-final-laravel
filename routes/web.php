@@ -13,6 +13,10 @@ Route::get('/user', function () {
     return view('user', compact('films'));
 })->name('user');
 
+Route::get('/esercizio', function () {
+    return view('esercizio');
+});
+
 Route::get('/dashboard', function () {
     $films = Film::all();
     return view('dashboard', compact('films'));

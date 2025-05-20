@@ -14,7 +14,6 @@ class ProductFilter extends Component
     public function updatedGenre($value)
     {
         $this->genre = $value;
-        logger("Genre updated to: " . $value);
     }
 
     public function render()
